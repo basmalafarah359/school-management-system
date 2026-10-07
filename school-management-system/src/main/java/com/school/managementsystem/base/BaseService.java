@@ -1,16 +1,18 @@
 package com.school.managementsystem.base;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 import java.util.Optional;
-
+@NoArgsConstructor
+@AllArgsConstructor
 public  abstract class BaseService<T extends BaseEntity,ID> {
+@Autowired
+protected  BaseRepository<T,ID> repository;
 
-protected final BaseRepository<T,ID> repository;
 
-public BaseService(BaseRepository<T,ID>repository){
-
-    this.repository =repository;
-}
     public List<T> findAll() {
         return repository.findAll();
     }
